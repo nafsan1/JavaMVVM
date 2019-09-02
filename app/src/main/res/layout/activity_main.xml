@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+
+   <data>
+       <variable
+           name="viewModel"
+           type="com.example.mvvmjava.viewmodel.LoginViewModel" />
+   </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context = ".MainActivity">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                app:addTextChangedListener = "@{viewModel.getEmailTexWatcher}"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                app:addTextChangedListener = "@{viewModel.getPasswordTextWatcher}"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/btn_login"
+            android:text="Login"
+            style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+            android:onClick="@{viewModel::onLoginClicked}"/>
+
+    </RelativeLayout>
+</layout>
